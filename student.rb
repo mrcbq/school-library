@@ -1,8 +1,8 @@
 require_relative 'person'
 
 class Student < Person
-  def initialize(name = "Unknown", age = nil, parent_permission = true, classroom)
-    super(name, age, parent_permission)
+  def initialize(name = 'Unknown', age = nil, classroom:, parent_permission: true)
+    super(name, age, parent_permission: parent_permission)
     @classroom = classroom
   end
 
