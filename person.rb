@@ -11,6 +11,8 @@ class Person < Nameable
     @parent_permission = parent_permission
   end
 
+  super()
+
   def can_use_services?
     of_age? || @parent_permission
   end
