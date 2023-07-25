@@ -4,7 +4,7 @@ class Person < Nameable
   attr_reader :id
   attr_accessor :name, :age
 
-  def initialize(name = 'Unknown', age = nil, parent_permission: true)
+  def initialize(age = nil, name = 'Unknown', parent_permission: true)
     @id = generate_id
     @name = name
     @age = age
@@ -15,6 +15,10 @@ class Person < Nameable
     of_age? || @parent_permission
   end
 
+  def correct_name
+    @name
+  end
+
   private
 
   def of_age?
@@ -23,9 +27,5 @@ class Person < Nameable
 
   def generate_id
     rand(1000..9999)
-  end
-
-  def correct_name
-    @name
   end
 end
