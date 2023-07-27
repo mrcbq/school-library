@@ -18,7 +18,7 @@ chemistry_class = Classroom.new('chemistry')
 math_class = Classroom.new('maths')
 
 student = Student.new(math_class, 'bob', 18)
-student1 = Student.new(chemistry_class, 'mrcbq', 29)
+student = Student.new(chemistry_class, 'mrcbq', 29)
 
 puts chemistry_class.students.inspect
 puts math_class.students.inspect
