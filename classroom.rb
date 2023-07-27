@@ -11,6 +11,7 @@ class Classroom
 
   def add_student(student)
     return if @students.include?(student)
+    
     @students << student
     student.classroom = self
   end
