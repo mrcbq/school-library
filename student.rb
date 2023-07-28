@@ -6,7 +6,7 @@ class Student < Person
 
   def initialize(classroom: 'Unknown', name: 'Unknown', age: nil, parent_permission: true)
     super(name: name, age: age, parent_permission: parent_permission)
-    self.classroom = classroom
+    @classroom = classroom
   end
 
   def classroom=(classroom)
