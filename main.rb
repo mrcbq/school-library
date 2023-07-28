@@ -1,12 +1,3 @@
-# require_relative 'person'
-# require_relative 'classroom'
-# require_relative 'student'
-# chemistry_class = Classroom.new(label: 'chemistry')
-# math_class = Classroom.new(label: 'maths')
-# Student.new(classroom: math_class, name: 'bob', age: 18)
-# Student.new(classroom: chemistry_class, name: 'mrcbq', age: 29)
-# puts chemistry_class.students.inspect
-# puts math_class.students.inspect
 require './app'
 
 class Main

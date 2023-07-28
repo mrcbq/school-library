@@ -2,7 +2,6 @@ require_relative 'rental'
 require_relative 'nameable'
 require_relative 'book'
 
-
 class Person < Nameable
   attr_reader :id
   attr_accessor :name, :age, :rentals
