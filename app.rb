@@ -116,6 +116,7 @@ class App
     puts 'Thanks for using the school library App!'
     p @books
     save_books_to_file
+    save_people_to_file
   end
 
   def save_books_to_file
@@ -136,4 +137,31 @@ class App
     # p books
     books
   end  
+
+  def save_people_to_file 
+  File.open('people.json', 'w') do |file|
+    serialized_people = @people.map(&:to_hash)
+    file.puts JSON.dump(serialized_people)
+    # if people.class == Student
+    #   file.puts JSON.dump(serialized_people)
+    # elsif people.class == Teacher
+    #   file.puts JSON.dump(serialized_people)
+    #   end
+    p serialized_people
+    end
+  end
+
+  def initialize_people
+    serialized_people = JSON.parse(File.read('people.json')) rescue []
+    people = []
+    serialized_people.each do |person_hash| 
+      if person_hash['class'] == 'Student'
+        people.push(Student.from_hash(person_hash))
+      elsif person_hash['class'] == 'Teacher'
+        people.push(Teacher.from_hash(person_hash))
+      # people.push(Person.from_hash(person_hash))
+      end
+    end
+    people
+  end
 end
