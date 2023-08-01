@@ -15,14 +15,26 @@ class Student < Person
   end
 
   def play_hooky
-    '¯\\(ツ)/¯'
+    '¯\(ツ)/¯'
   end
 
   def to_hash
     {
+      class: 'Student',
       name: @name,
       age: @age,
       parent_permission: @parent_permission,
       classroom: @classroom
     }
+  end
+
+  def self.from_hash(hash)
+    p hash
+    name = hash["name"]
+    age = hash["age"]
+    parent_permission = hash["parent_permission"]
+    classroom = hash["classroom"]
+    student = Student.new(name: name, age: age, parent_permission: parent_permission, classroom: classroom)
+    student
+  end
 end
