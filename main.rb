@@ -44,7 +44,7 @@ class Main
     when 6
       @app.list_rentals_by_id
     when 7
-      puts 'Thanks for using the school library App!'
+      @app.exit
       exit
     else
       puts 'Invalid number: Please enter a valid number next time'

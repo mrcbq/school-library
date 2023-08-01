@@ -2,12 +2,13 @@ require './book'
 require './student'
 require './teacher'
 require './rental'
+require 'json'
 
 class App
   attr_accessor :books, :people, :rentals
 
   def initialize
-    @books = []
+    @books = initialize_books
     @people = []
     @rentals = []
   end
@@ -110,4 +111,25 @@ class App
     end
     puts
   end
+
+  def exit
+    puts 'Thanks for using the school library App!'
+    p @books
+    save_books_to_file
+  end
+
+  def save_books_to_file
+    File.open('books.json', 'w') do |file|
+      serialized_books = @books.map(&:to_hash)
+      file.puts JSON.dump(serialized_books)
+    end
+  end
+
+  def initialize_books
+    p @books
+    serialized_books = JSON.parse(File.read('books.json')) rescue []
+    serialized_books.map { |book_hash| Book.from_hash(book_hash) }
+    p serialized_books
+    serialized_books
+  end  
 end
