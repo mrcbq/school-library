@@ -11,10 +11,16 @@ class Teacher < Person
   end
 
   def to_hash
-    {
-      name: @name,
-      age: @age,
-      parent_permission: @parent_permission,
-      specialization: @specialization
-    }
+  {class:'Teacher', name: @name, age: @age, parent_permission: @parent_permission, specialization: @specialization}
+  end
+
+  def self.from_hash(hash)
+    p hash
+    name = hash["name"]
+    age = hash["age"]
+    parent_permission = hash["parent_permission"]
+    specialization = hash["specialization"]
+    teacher = Teacher.new(name: name, age: age, parent_permission: parent_permission, specialization: specialization)
+    teacher
+  end
 end
