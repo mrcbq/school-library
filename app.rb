@@ -9,7 +9,7 @@ class App
 
   def initialize
     @books = initialize_books
-    @people = []
+    @people = initialize_people
     @rentals = []
   end
 
@@ -139,15 +139,9 @@ class App
   end  
 
   def save_people_to_file 
-  File.open('people.json', 'w') do |file|
     serialized_people = @people.map(&:to_hash)
+    File.open('people.json', 'w') do |file|
     file.puts JSON.dump(serialized_people)
-    # if people.class == Student
-    #   file.puts JSON.dump(serialized_people)
-    # elsif people.class == Teacher
-    #   file.puts JSON.dump(serialized_people)
-    #   end
-    p serialized_people
     end
   end
 
@@ -159,9 +153,8 @@ class App
         people.push(Student.from_hash(person_hash))
       elsif person_hash['class'] == 'Teacher'
         people.push(Teacher.from_hash(person_hash))
-      # people.push(Person.from_hash(person_hash))
       end
     end
-    people
+    @people = people
   end
 end
