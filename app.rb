@@ -154,4 +154,11 @@ class App
     end
     @people = people
   end
+
+  def save_rentals_to_file
+    File.open('rentals.json', 'w') do |file|
+      serialized_rentals = @rentals.map(&:to_hash)
+      file.puts JSON.dump(serialized_rentals)
+    end
+  end
 end
