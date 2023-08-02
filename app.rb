@@ -3,6 +3,7 @@ require './student'
 require './teacher'
 require './rental'
 require 'json'
+require 'pry'
 
 class App
   attr_accessor :books, :people, :rentals
@@ -114,9 +115,9 @@ class App
 
   def exit
     puts 'Thanks for using the school library App!'
-    p @books
     save_books_to_file
     save_people_to_file
+    save_rentals_to_file
   end
 
   def save_books_to_file
@@ -156,9 +157,19 @@ class App
   end
 
   def save_rentals_to_file
+    serialized_rentals = []
     File.open('rentals.json', 'w') do |file|
-      serialized_rentals = @rentals.map(&:to_hash)
+      @rentals.each do |rental|
+        rental_serialized = 
+            {
+            date: rental.date,
+            book: rental.to_hash[:book],
+            person: rental.to_hash[:person]
+          }
+        serialized_rentals.push(rental_serialized)
+      end
       file.puts JSON.dump(serialized_rentals)
+      p serialized_rentals
     end
   end
 end
