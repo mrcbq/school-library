@@ -23,12 +23,11 @@ class Main
     puts '4 - Create a book'
     puts '5 - Create a rental'
     puts '6 - List all rental for a given person id'
-    puts '7 - Exit'
+    puts 'Another option -> Exit'
     puts
     gets.chomp.to_i
   end
 
-  # rubocop:disable Metrics/CyclomaticComplexity
   def choice_selected(number)
     case number
     when 1
@@ -43,13 +42,11 @@ class Main
       @app.create_rental
     when 6
       @app.list_rentals_by_id
-    when 7
+    else
+      puts 'Thanks for use this app, I will be exit right now'
       @app.exit
       exit
-    else
-      puts 'Invalid number: Please enter a valid number next time'
     end
-    # rubocop:enable Metrics/CyclomaticComplexity
   end
 end
 

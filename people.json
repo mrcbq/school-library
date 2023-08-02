@@ -1,1 +1,1 @@
-[{"class":"Student","name":"John doe","age":15,"parent_permission":true,"classroom":"Tech"},{"class":"Teacher","name":"Bill gates","age":60,"parent_permission":true,"specialization":"Computer science"}]
+[{"class":"Student","name":"John doe","age":15,"parent_permission":true,"classroom":"Tech"},{"class":"Teacher","name":"Bill gates","age":60,"parent_permission":true,"specialization":"Computer science"},{"class":"Student","name":"Lincoln","age":23,"parent_permission":true,"classroom":"History"}]

@@ -127,21 +127,18 @@ class App
   end
 
   def initialize_books
-    # p @books
     serialized_books = JSON.parse(File.read('books.json')) rescue []
     books = []
-    # p serialized_books.class
     serialized_books.each do |book_hash| 
       books.push(Book.from_hash(book_hash))
     end
-    # p books
     books
   end  
 
   def save_people_to_file 
     serialized_people = @people.map(&:to_hash)
     File.open('people.json', 'w') do |file|
-    file.puts JSON.dump(serialized_people)
+      file.puts JSON.dump(serialized_people)
     end
   end
 
