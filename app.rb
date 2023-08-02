@@ -11,7 +11,7 @@ class App
   def initialize
     @books = initialize_books
     @people = initialize_people
-    @rentals = []
+    @rentals = initialize_rentals
   end
 
   def list_all_books
@@ -162,7 +162,7 @@ class App
       @rentals.each do |rental|
         rental_serialized = 
             {
-            date: rental.date,
+            date: Time.now,
             book: rental.to_hash[:book],
             person: rental.to_hash[:person]
           }
@@ -171,5 +171,15 @@ class App
       file.puts JSON.dump(serialized_rentals)
       p serialized_rentals
     end
+  end
+
+  def initialize_rentals
+    serialized_rentals = JSON.parse(File.read('rentals.json')) rescue []
+    rentals = []
+    serialized_rentals.each do |rental_hash| 
+      rentals.push(Rental.from_hash(rental_hash))
+    end
+    p rentals
+    rentals
   end
 end
