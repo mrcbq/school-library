@@ -11,7 +11,13 @@ class Teacher < Person
   end
 
   def to_hash
-  {class:'Teacher', name: @name, age: @age, parent_permission: @parent_permission, specialization: @specialization}
+    {
+      class:'Teacher',
+      name: @name,
+      age: @age,
+      parent_permission: @parent_permission,
+      specialization: @specialization
+    }
   end
 
   def self.from_hash(hash)

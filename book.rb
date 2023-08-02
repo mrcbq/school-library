@@ -13,7 +13,7 @@ class Book
     {
       title: @title,
       author: @author,
-      rentals: @rentals.map(&:to_hash)
+      # rentals: @rentals.map(&:to_hash)
     }
   end
 
@@ -22,7 +22,7 @@ class Book
     author  = hash["author"]
     rental = hash["rentals"]
     book = Book.new(title: title, author: author)
-    book.rentals = rental&.map { |rental_hash| self.from_hash(rental_hash) } || []
+    # book.rentals = rental&.map { |rental_hash| self.from_hash(rental_hash) } || []
     book
   end
 end
