@@ -85,7 +85,6 @@ class App
   end
 
   def create_rental
-    p @rentals
     puts 'Select a book from the following list by number: '
     list_all_books
     number_book = gets.chomp.to_i
