@@ -177,11 +177,9 @@ class App
             book: rental.book.to_hash,
             person: rental.person.to_hash
           }
-          # binding.pry
           serialized_rentals.push(rental_serialized)
       end
       file.puts JSON.dump(serialized_rentals)
-      puts serialized_rentals
     end
   end
 
@@ -191,7 +189,6 @@ class App
     serialized_rentals.each do |rental_hash| 
       rentals.push(Rental.from_hash(rental_hash))
     end
-    # puts rentals
     rentals
   end
 end

@@ -30,7 +30,6 @@ class Student < Person
   end
 
   def self.from_hash(hash)
-    # p hash
     id = hash["id"]
     name = hash["name"]
     age = hash["age"]
