@@ -1,6 +1,7 @@
 require_relative '../rental'
 require_relative '../book'
 require_relative '../student'
+require 'pry'
 
 RSpec.describe Rental do
   describe '#initialize' do
@@ -37,17 +38,26 @@ RSpec.describe Rental do
     end
   end
 
-  # describe '.from_hash' do
-  #   it 'creates a new book from a hash' do
-  #     book_hash = {
-  #       'title' => 'Sample Book',
-  #       'author' => 'John Doe'
-  #     }
-  #     book = Book.from_hash(book_hash)
-  #     expect(book.title).to eq('Sample Book')
-  #     expect(book.author).to eq('John Doe')
-  #     expect(book.rentals).to eq([])
-  #   end
-  # end
+  describe '.from_hash' do
+    it 'creates a new rental from a hash' do
+      rental_hash = {
+      'date' => '23/8/23',
+      'book' => {
+        'title' => 'Sample Book',
+        'author' => 'John Doe'
+      },
+      'person' => {
+        'id' => 12345,
+        'name' => 'Richard',
+        'age' => 45,
+        'parent_permission' => true
+      }
+    }
+      rental = Rental.from_hash(rental_hash)
+      expect(rental.date).to eq('23/8/23')
+      expect(rental.book.title).to eq('Sample Book')
+      expect(rental.person.name).to eq('Richard')
+    end
+  end
 end
 
