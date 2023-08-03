@@ -1,5 +1,8 @@
+# frozen_string_literal: true
+
 require_relative 'student'
 
+# Represents a classroom in the school.
 class Classroom
   attr_accessor :label
   attr_reader :students
