@@ -1,5 +1,8 @@
+# frozen_string_literal: true
+
 require_relative 'rental'
 
+# Represents a book in the library.
 class Book
   attr_accessor :title, :author, :rentals
 
@@ -12,15 +15,14 @@ class Book
   def to_hash
     {
       title: @title,
-      author: @author,
+      author: @author
     }
   end
 
   def self.from_hash(hash)
-    title = hash["title"]
-    author  = hash["author"]
-    rental = hash["rentals"]
-    book = Book.new(title: title, author: author)
-    book
+    title = hash['title']
+    author = hash['author']
+    hash['rentals']
+    Book.new(title: title, author: author)
   end
 end
