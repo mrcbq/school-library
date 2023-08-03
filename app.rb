@@ -108,13 +108,19 @@ class App
     list_all_people
     print 'enter the ID of person to search: '
     id_person = gets.chomp.to_i
-    
-    person_to_find = @people.find { |person| person.id == id_person }
-    puts 'Rentals: '
-    person_to_find.rentals.each do |rental|
-      puts "Date: #{rental.date}, Book \"#{rental.book.title}\" by #{rental.book.author}"
+
+    rentals_for_person = @rentals.select { |rental| rental.person.id == id_person }
+
+    if rentals_for_person.empty?
+      puts 'No rentals found for the person with the given ID'
+    else
+      puts 'Rentals: '
+      rentals_for_person.each do |rental|
+        puts "Date: #{rental.date}, Book \"#{rental.book.title}\" by #{rental.book.author}"
+      end
     end
-    puts
+
+  puts
   end
 
   def exit
