@@ -124,11 +124,9 @@ class App
   end
 
   def exit
-    puts 'Thanks for using the school library App!'
     save_books_to_file
     save_people_to_file
     save_rentals_to_file
-    print @rentals
   end
 
   def save_books_to_file
