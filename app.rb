@@ -95,9 +95,7 @@ class App
     number_person = gets.chomp.to_i
     person = @people[number_person]
     puts
-    print 'Date: '
-    date = gets.chomp.to_s
-    new_rental = Rental.new(date: date, book: book, person: person)
+    new_rental = Rental.new(book: book, person: person)
     @rentals << new_rental
     print 'Rental created successfully'
   end
@@ -171,7 +169,7 @@ class App
       @rentals.each do |rental|
         rental_serialized = 
           {
-            date: Time.now,
+            date: rental.date,
             book: rental.book.to_hash,
             person: rental.person.to_hash
           }
