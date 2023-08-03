@@ -104,6 +104,7 @@ class App
 
   def list_rentals_by_id
     print 'Select one ID from the following people list'
+    puts
     list_all_people
     print 'enter the ID of person to search: '
     id_person = gets.chomp.to_i
