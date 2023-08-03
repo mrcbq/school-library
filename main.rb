@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require './app'
 
 # Represents the main class for the application entry point.
