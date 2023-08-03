@@ -6,8 +6,8 @@ class Person < Nameable
   attr_reader :id
   attr_accessor :name, :age, :rentals
 
-  def initialize(name: 'Unknown', age: nil, parent_permission: true)
-    @id = generate_id
+  def initialize(id: nil, name: 'Unknown', age: nil, parent_permission: true)
+    @id = id || generate_id
     @name = name
     @age = age
     @parent_permission = parent_permission
@@ -25,12 +25,12 @@ class Person < Nameable
 
   def to_hash
     {
+      id: @id,
       name: @name,
       age: @age,
       parent_permission: @parent_permission
     }
   end
-  
 
   private
 

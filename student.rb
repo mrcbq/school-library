@@ -4,8 +4,8 @@ require_relative 'person'
 class Student < Person
   attr_reader :classroom
 
-  def initialize(classroom: 'Unknown', name: 'Unknown', age: nil, parent_permission: true)
-    super(name: name, age: age, parent_permission: parent_permission)
+  def initialize(id: nil, classroom: 'Unknown', name: 'Unknown', age: nil, parent_permission: true)
+    super(id: id, name: name, age: age, parent_permission: parent_permission)
     @classroom = classroom
   end
 
@@ -30,12 +30,13 @@ class Student < Person
   end
 
   def self.from_hash(hash)
-    p hash
+    # p hash
+    id = hash["id"]
     name = hash["name"]
     age = hash["age"]
     parent_permission = hash["parent_permission"]
     classroom = hash["classroom"]
-    student = Student.new(name: name, age: age, parent_permission: parent_permission, classroom: classroom)
+    student = Student.new(id: id, name: name, age: age, parent_permission: parent_permission, classroom: classroom)
     student
   end
 end

@@ -1,8 +1,8 @@
 require_relative 'person'
 
 class Teacher < Person
-  def initialize(name: 'Unknown', age: nil, specialization: 'Unknown', parent_permission: true)
-    super(name: name, age: age, parent_permission: parent_permission)
+  def initialize(id: nil, name: 'Unknown', age: nil, specialization: 'Unknown', parent_permission: true)
+    super(id: id, name: name, age: age, parent_permission: parent_permission)
     @specialization = specialization
   end
 
@@ -22,12 +22,13 @@ class Teacher < Person
   end
 
   def self.from_hash(hash)
-    p hash
+    # p hash
+    id = hash["id"]
     name = hash["name"]
     age = hash["age"]
     parent_permission = hash["parent_permission"]
     specialization = hash["specialization"]
-    teacher = Teacher.new(name: name, age: age, parent_permission: parent_permission, specialization: specialization)
+    teacher = Teacher.new(id: id, name: name, age: age, parent_permission: parent_permission, specialization: specialization)
     teacher
   end
 end

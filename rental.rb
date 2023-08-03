@@ -23,20 +23,8 @@ class Rental
   def self.from_hash(hash)
     date = hash["date"]
     book  = Book.new(title: hash["book"]["title"], author: hash["book"]["author"])
-    person = Person.new(name: hash["person"]["name"], age: hash["person"]["age"], parent_permission: hash["person"]["parent_permission"])
-    print book
-    print person
-    rental = Rental.new(book: book, person: person, date: date)
-    # binding.pry
-    # print rental
-    # book.rentals = rental&.map { |rental_hash| self.from_hash(rental_hash) } || []
+    person = Person.new(id: hash["person"]["id"], name: hash["person"]["name"], age: hash["person"]["age"], parent_permission: hash["person"]["parent_permission"])
+    rental = Rental.new(date: date, book: book, person: person)
     rental
   end
-  # def to_hash
-  #   {
-  #     date: @date,
-  #     person: @person,
-  #     book: @book
-  #   }
-  # end
 end

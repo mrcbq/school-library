@@ -85,6 +85,7 @@ class App
   end
 
   def create_rental
+    p @rentals
     puts 'Select a book from the following list by number: '
     list_all_books
     number_book = gets.chomp.to_i
@@ -103,8 +104,11 @@ class App
   end
 
   def list_rentals_by_id
-    print 'ID of person: '
+    print 'Select one ID from the following people list'
+    list_all_people
+    print 'enter the ID of person to search: '
     id_person = gets.chomp.to_i
+    
     person_to_find = @people.find { |person| person.id == id_person }
     puts 'Rentals: '
     person_to_find.rentals.each do |rental|
@@ -181,8 +185,7 @@ class App
     serialized_rentals.each do |rental_hash| 
       rentals.push(Rental.from_hash(rental_hash))
     end
-    puts rentals
-    # binding.pry
+    # puts rentals
     rentals
   end
 end
