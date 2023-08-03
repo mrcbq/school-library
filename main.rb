@@ -1,12 +1,15 @@
+# frozen_string_literal: true
+
 require './app'
 
+# Represents the main class for the application entry point.
 class Main
   def initialize
     @app = App.new
   end
 
   def start
-    puts 'Welcome to School Libary App!'
+    puts 'Welcome to School Library App!'
 
     loop do
       number_choice = list_of_options
@@ -24,30 +27,27 @@ class Main
     puts '5 - Create a rental'
     puts '6 - List all rental for a given person id'
     puts 'Another option -> Exit'
-    puts
     gets.chomp.to_i
   end
 
   def choice_selected(number)
     case number
-    when 1
-      @app.list_all_books
-    when 2
-      @app.list_all_people
-    when 3
-      @app.create_person
-    when 4
-      @app.create_book
-    when 5
-      @app.create_rental
-    when 6
-      @app.list_rentals_by_id
+    when 1 then @app.list_all_books
+    when 2 then @app.list_all_people
+    when 3 then @app.create_person
+    when 4 then @app.create_book
+    when 5 then @app.create_rental
+    when 6 then @app.list_rentals_by_id
     else
-      puts 'Thanks for use this app, I will be exit right now'
-      @app.exit
-      exit
+      exit_app
     end
   end
+end
+
+def exit_app
+  puts 'Thanks for use this app, I will be exit right now'
+  @app.exit
+  exit
 end
 
 def main
