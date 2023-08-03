@@ -1,7 +1,10 @@
+# frozen_string_literal: true
+
 require_relative 'rental'
 require_relative 'nameable'
 require_relative 'book'
 
+# Represents a person (base class for students and teachers).
 class Person < Nameable
   attr_reader :id
   attr_accessor :name, :age, :rentals
