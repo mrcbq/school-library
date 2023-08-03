@@ -1,5 +1,8 @@
+# frozen_string_literal: true
+
 require_relative 'person'
 
+# Represents a teacher.
 class Teacher < Person
   def initialize(id: nil, name: 'Unknown', age: nil, specialization: 'Unknown', parent_permission: true)
     super(id: id, name: name, age: age, parent_permission: parent_permission)
@@ -12,22 +15,23 @@ class Teacher < Person
 
   def to_hash
     super.merge(
-    {
-      class:'Teacher',
-      name: @name,
-      age: @age,
-      parent_permission: @parent_permission,
-      specialization: @specialization
-    })
+      {
+        class: 'Teacher',
+        name: @name,
+        age: @age,
+        parent_permission: @parent_permission,
+        specialization: @specialization
+      }
+    )
   end
 
   def self.from_hash(hash)
-    id = hash["id"]
-    name = hash["name"]
-    age = hash["age"]
-    parent_permission = hash["parent_permission"]
-    specialization = hash["specialization"]
-    teacher = Teacher.new(id: id, name: name, age: age, parent_permission: parent_permission, specialization: specialization)
-    teacher
+    id = hash['id']
+    name = hash['name']
+    age = hash['age']
+    parent_permission = hash['parent_permission']
+    specialization = hash['specialization']
+    Teacher.new(id: id, name: name, age: age, parent_permission: parent_permission,
+                specialization: specialization)
   end
 end
