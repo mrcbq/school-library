@@ -118,6 +118,7 @@ class App
     save_books_to_file
     save_people_to_file
     save_rentals_to_file
+    print @rentals
   end
 
   def save_books_to_file
@@ -161,15 +162,16 @@ class App
     File.open('rentals.json', 'w') do |file|
       @rentals.each do |rental|
         rental_serialized = 
-            {
+          {
             date: Time.now,
-            book: rental.to_hash[:book],
-            person: rental.to_hash[:person]
+            book: rental.book.to_hash,
+            person: rental.person.to_hash
           }
-        serialized_rentals.push(rental_serialized)
+          # binding.pry
+          serialized_rentals.push(rental_serialized)
       end
       file.puts JSON.dump(serialized_rentals)
-      p serialized_rentals
+      puts serialized_rentals
     end
   end
 
@@ -179,7 +181,8 @@ class App
     serialized_rentals.each do |rental_hash| 
       rentals.push(Rental.from_hash(rental_hash))
     end
-    p rentals
+    puts rentals
+    # binding.pry
     rentals
   end
 end

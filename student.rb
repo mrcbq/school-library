@@ -19,13 +19,14 @@ class Student < Person
   end
 
   def to_hash
+    super.merge(
     {
       class: 'Student',
       name: @name,
       age: @age,
       parent_permission: @parent_permission,
       classroom: @classroom
-    }
+    })
   end
 
   def self.from_hash(hash)

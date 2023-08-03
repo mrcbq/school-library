@@ -26,11 +26,11 @@ class Rental
     person = Person.new(name: hash["person"]["name"], age: hash["person"]["age"], parent_permission: hash["person"]["parent_permission"])
     print book
     print person
-    binding.pry
     rental = Rental.new(book: book, person: person, date: date)
-    print rental
+    # binding.pry
+    # print rental
     # book.rentals = rental&.map { |rental_hash| self.from_hash(rental_hash) } || []
-    book
+    rental
   end
   # def to_hash
   #   {

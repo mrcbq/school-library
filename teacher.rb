@@ -11,13 +11,14 @@ class Teacher < Person
   end
 
   def to_hash
+    super.merge(
     {
       class:'Teacher',
       name: @name,
       age: @age,
       parent_permission: @parent_permission,
       specialization: @specialization
-    }
+    })
   end
 
   def self.from_hash(hash)
