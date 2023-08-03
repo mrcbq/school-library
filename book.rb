@@ -1,5 +1,6 @@
 require_relative 'rental'
 
+# Represents a book in the library.
 class Book
   attr_accessor :title, :author, :rentals
 
@@ -9,9 +10,17 @@ class Book
     @rentals = []
   end
 
-  def add_rental(person, date)
-    rental = Rental.new(book: self, person: person, date: date)
-    @rentals << rental
-    rental
+  def to_hash
+    {
+      title: @title,
+      author: @author
+    }
+  end
+
+  def self.from_hash(hash)
+    title = hash['title']
+    author = hash['author']
+    hash['rentals']
+    Book.new(title: title, author: author)
   end
 end

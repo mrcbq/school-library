@@ -1,12 +1,13 @@
 require './app'
 
+# Represents the main class for the application entry point.
 class Main
   def initialize
     @app = App.new
   end
 
   def start
-    puts 'Welcome to School Libary App!'
+    puts 'Welcome to School Library App!'
 
     loop do
       number_choice = list_of_options
@@ -23,34 +24,28 @@ class Main
     puts '4 - Create a book'
     puts '5 - Create a rental'
     puts '6 - List all rental for a given person id'
-    puts '7 - Exit'
-    puts
+    puts 'Another option -> Exit'
     gets.chomp.to_i
   end
 
-  # rubocop:disable Metrics/CyclomaticComplexity
   def choice_selected(number)
     case number
-    when 1
-      @app.list_all_books
-    when 2
-      @app.list_all_people
-    when 3
-      @app.create_person
-    when 4
-      @app.create_book
-    when 5
-      @app.create_rental
-    when 6
-      @app.list_rentals_by_id
-    when 7
-      puts 'Thanks for using the school library App!'
-      exit
+    when 1 then @app.list_all_books
+    when 2 then @app.list_all_people
+    when 3 then @app.create_person
+    when 4 then @app.create_book
+    when 5 then @app.create_rental
+    when 6 then @app.list_rentals_by_id
     else
-      puts 'Invalid number: Please enter a valid number next time'
+      exit_app
     end
-    # rubocop:enable Metrics/CyclomaticComplexity
   end
+end
+
+def exit_app
+  puts 'Thanks for use this app, I will be exit right now'
+  @app.exit
+  exit
 end
 
 def main
