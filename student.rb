@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # this is inherited from the person class
 
 require_relative 'classroom'
