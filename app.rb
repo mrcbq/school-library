@@ -111,6 +111,6 @@ class App
     save_books_to_file
     save_people_to_file
     save_rentals_to_file
-    puts 'Data saved successfully! '
+    puts 'Data saved successfully!'
   end
 end
